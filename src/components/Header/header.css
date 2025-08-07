@@ -6,8 +6,8 @@ header{
     align-items: center;
     justify-content: space-between;
     background-color: var(--header-bg-color);
-
     border: 1px solid var(--dark-color);
+    color: white;
 }
 
 header img {
