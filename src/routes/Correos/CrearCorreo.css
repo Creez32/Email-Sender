@@ -1,0 +1,133 @@
+.crear-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f4f6f8;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.crear-container h2 {
+  text-align: center;
+  margin-bottom: 18px;
+  color: #17518b;
+}
+
+.label {
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #17518b;
+}
+
+/* contenedor de chips + input */
+.recipients-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-height: 48px;
+  background: #fff;
+  cursor: text;
+}
+
+/* chip de destinatario */
+.recipient-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e6f0ff;
+  color: #17518b;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+/* botón pequeño para eliminar chip */
+.remove-recipient {
+  background: transparent;
+  border: none;
+  color: #17518b;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+/* input dentro del contenedor */
+.recipient-text-input {
+  flex: 1;
+  min-width: 160px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 6px;
+}
+
+/* inputs normales */
+.crear-container input[type="text"],
+.crear-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.crear-container textarea {
+  min-height: 160px;
+  resize: vertical;
+  margin-bottom: 6px;
+}
+
+/* botones */
+.buttons-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: flex-end;
+}
+
+.btn-enviar {
+  background-color: #17518b;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-volver {
+  background-color: #ccc;
+  color: #333;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* responsive pequeño */
+@media (max-width: 600px) {
+  .crear-container {
+    margin: 14px;
+    padding: 14px;
+  }
+
+  .buttons-row {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .btn-volver {
+    width: 100%;
+  }
+}

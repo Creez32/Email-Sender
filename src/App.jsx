@@ -8,6 +8,8 @@ import Login from './routes/Login/Login';
 import Historial from './routes/Historial/Historial';
 import Plantillas from './routes/Plantillas/Plantillas';
 import Correos from './routes/Correos/Correos';
+import EnviarPlantilla from './routes/Correos/EnviarPlantilla';
+import CrearCorreo from './routes/Correos/CrearCorreo';
 
 function App() {
 
@@ -28,9 +30,12 @@ function App() {
                     <Route path="/Plantillas" element={
                         <Plantillas />
                     } />
+                    <Route path="/enviar-plantilla" element={<EnviarPlantilla />} />
+                    <Route path="/crear-correo" element={<CrearCorreo />} />
                     <Route path="/Login" element={
                         <Login />
                     } />
+
                 </Routes>
             </BrowserRouter>
         </>
