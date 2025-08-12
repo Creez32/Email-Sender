@@ -8,6 +8,9 @@ import Login from './routes/Login/Login';
 import Historial from './routes/Historial/Historial';
 import Plantillas from './routes/Plantillas/Plantillas';
 import Correos from './routes/Correos/Correos';
+import { RutaProtegida } from './components/RutaProtegida/RutaProtegida';
+import EnviarPlantilla from './routes/Correos/EnviarPlantilla';
+import CrearCorreo from './routes/Correos/CrearCorreo';
 
 function App() {
 
@@ -36,8 +39,16 @@ function App() {
                             <Plantillas />
                         </RutaProtegida>
                     } />
-                    <Route path="/enviar-plantilla" element={<EnviarPlantilla />} />
-                    <Route path="/crear-correo" element={<CrearCorreo />} />
+                    <Route path="/enviar-plantilla" element={
+                        <RutaProtegida>
+                            <EnviarPlantilla />
+                        </RutaProtegida>
+                    } />
+                    <Route path="/crear-correo" element={
+                        <RutaProtegida>
+                            <CrearCorreo />
+                        </RutaProtegida>
+                    } />
                     <Route path="/Login" element={
                         <Login />
                     } />
