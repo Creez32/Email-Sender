@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import { authReducer, initialState } from './reducer/auth';
 import apiConfig from '../utils/apiConfig';
+import axios from 'axios';
 
 // Contexto para manejar la sesión del usuario
 const LoginContext = React.createContext();

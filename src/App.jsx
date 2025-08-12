@@ -8,6 +8,7 @@ import Login from './routes/Login/Login';
 import Historial from './routes/Historial/Historial';
 import Plantillas from './routes/Plantillas/Plantillas';
 import Correos from './routes/Correos/Correos';
+import { RutaProtegida } from './components/RutaProtegida/RutaProtegida';
 
 function App() {
 
@@ -17,16 +18,24 @@ function App() {
                 <Header />
                 <Routes>
                     <Route path="/" element={
-                        <Home />
+                        <RutaProtegida>
+                            <Home />
+                        </RutaProtegida>
                     } />
                     <Route path="/Historial" element={
-                        <Historial />
+                        <RutaProtegida>
+                            <Historial />
+                        </RutaProtegida>
                     } />
                     <Route path="/Correos" element={
-                        <Correos />
+                        <RutaProtegida>
+                            <Correos />
+                        </RutaProtegida>
                     } />
                     <Route path="/Plantillas" element={
-                        <Plantillas />
+                        <RutaProtegida>
+                            <Plantillas />
+                        </RutaProtegida>
                     } />
                     <Route path="/Login" element={
                         <Login />
