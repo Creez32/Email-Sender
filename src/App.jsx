@@ -8,7 +8,6 @@ import Login from './routes/Login/Login';
 import Historial from './routes/Historial/Historial';
 import Plantillas from './routes/Plantillas/Plantillas';
 import Correos from './routes/Correos/Correos';
-import { RutaProtegida } from './components/RutaProtegida/RutaProtegida';
 
 function App() {
 
@@ -37,9 +36,12 @@ function App() {
                             <Plantillas />
                         </RutaProtegida>
                     } />
+                    <Route path="/enviar-plantilla" element={<EnviarPlantilla />} />
+                    <Route path="/crear-correo" element={<CrearCorreo />} />
                     <Route path="/Login" element={
                         <Login />
                     } />
+
                 </Routes>
             </BrowserRouter>
         </>
