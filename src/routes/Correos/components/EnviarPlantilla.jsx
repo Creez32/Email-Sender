@@ -16,21 +16,23 @@ export default function EnviarPlantilla() {
     };
 
     return (
-        <div className="enviar-container">
-            <h2>Enviar Plantilla</h2>
-            <input
-                type="text"
-                placeholder="Ingresar email o CUIT"
-                value={destinatario}
-                onChange={(e) => setDestinatario(e.target.value)}
-            />
-            <button className="btn-enviar" onClick={handleEnviar}>
-                Enviar
-            </button>
+        <main className='Correos'>
+            <div className="enviar-container">
+                <h2>Enviar Plantilla</h2>
+                <input
+                    type="text"
+                    placeholder="Ingresar email o CUIT"
+                    value={destinatario}
+                    onChange={(e) => setDestinatario(e.target.value)}
+                />
+                <button className="btn-enviar" onClick={handleEnviar}>
+                    Enviar
+                </button>
 
-            <button className="btn-volver" onClick={() => navigate('/Correos')}>
-                Volver
-            </button>
-        </div>
+                <button className="btn-volver" onClick={() => navigate('/Correos')}>
+                    Volver
+                </button>
+            </div>
+        </main>
     );
 }

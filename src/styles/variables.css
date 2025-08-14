@@ -14,4 +14,11 @@
     --dark-color: #343a40;
     --header-bg-color: #343a40;
     --color-bg: #2e2e2e;
+    --accent-color: #ff8c00; /* naranja cálido */
+    --accent-hover: #ffa733;
+    --selected-color: #8b591b; /* naranja cálido */
+    --text-color: #f5f5f5;
+    --muted-text: #bbb;
+    --panel-color: #3a3a3a;
+    --panel-alt-color: #444;
 }
