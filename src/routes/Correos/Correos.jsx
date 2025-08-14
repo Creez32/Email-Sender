@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
 import "./Correos.css";
 
 export default function Correos() {
@@ -11,17 +11,20 @@ export default function Correos() {
       <div className="correos-buttons">
         <button
           className="btn-plantilla"
-          onClick={() => navigate("/enviar-plantilla")}
+          onClick={() => navigate("/Correos/enviar-plantilla")}
         >
           Enviar Plantilla
         </button>
         <button
           className="btn-nuevo"
-          onClick={() => navigate("/crear-correo")}
+          onClick={() => navigate("/Correos/crear-correo")}
         >
           Crear nuevo correo
         </button>
       </div>
+
+      {/* Aquí React Router inyecta la vista de la subruta */}
+      <Outlet />
     </div>
   );
 }

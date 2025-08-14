@@ -2,7 +2,6 @@
 
 .historial-container {
     display: flex;
-    height: 100vh;
     background-color: #e5ddd5;
     font-family: 'Segoe UI', sans-serif;
 }

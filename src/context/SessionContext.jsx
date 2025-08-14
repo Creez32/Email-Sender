@@ -11,10 +11,9 @@ function useLoginReducer() {
 
     const logearUsuario = async (item) => {
         try {
-            const baseURL = apiConfig.localUrl; // Cambia según el entorno
+            const baseURL = apiConfig.productionUrl; // Cambia según el entorno
             const loginRouter = '/users/login';
             const responseLogin = await axios.post(`${baseURL}${loginRouter}`, item);
-
             if (responseLogin.status !== 200) {
                 throw new Error(responseLogin.data.message || 'Error al iniciar sesión');
             }
@@ -86,7 +85,7 @@ const LoginProvider = ({ children }) => {
     const { state, logearUsuario, tokenLogin, deslogearUsuario } = useLoginReducer();
 
     return (
-        <LoginContext.Provider value={{ state, logearUsuario, tokenLogin, deslogearUsuario }}>
+        <LoginContext.Provider value={{ usuario: state, logearUsuario, tokenLogin, deslogearUsuario }}>
             {children}
         </LoginContext.Provider>
     );

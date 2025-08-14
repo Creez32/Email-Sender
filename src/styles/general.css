@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -6,13 +6,23 @@
 
 html {
     scroll-behavior: smooth;
+    background-color: var(--color-bg);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-family);
     font-weight: var(--font-weight);
 }
 
+main {
+    width: 100%;
+    height: calc(100dvh - 40px);
+}
 
 a {
     text-decoration: none;
@@ -21,4 +31,13 @@ a {
 
 li {
     list-style: none;
+}
+
+/* Menú lateral a partir de 425px */
+@media screen and (min-width: 425px) {
+    main {
+        width: calc(100% - 90px);
+        margin-left: 90px;
+        height: 100vh;
+    }
 }

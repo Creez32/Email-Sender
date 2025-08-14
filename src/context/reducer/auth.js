@@ -22,9 +22,9 @@ export const authReducer = (state, action) => {
     // Login
     if (actionType === loginActions.singin) {
         let obj = {
-            token: valores.token,
-            usuario: valores.usuario,
-            permisos: valores.permisos
+            token: valores.meta.token,
+            usuario: valores.data.usuario,
+            permisos: valores.data.permisos
         }
         updateUserLocalStorage(obj)
         return obj
@@ -39,9 +39,9 @@ export const authReducer = (state, action) => {
         }
 
         let obj = {
-            token: valores.token,
-            usuario: valores.usuario,
-            permisos: valores.permisos
+            token: valores.meta.token,
+            usuario: valores.data.usuario,
+            permisos: valores.data.permisos
         }
         updateUserLocalStorage(obj)
         return obj

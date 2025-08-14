@@ -7,7 +7,7 @@ export const RutaProtegida = ({ children }) => {
 
     // Verificación de autenticación
     const isValidLogin = usuario && usuario.token;
-
+    
     const updateAuthTokenViejo = () => {
         window.localStorage.removeItem('authToken');
     };
