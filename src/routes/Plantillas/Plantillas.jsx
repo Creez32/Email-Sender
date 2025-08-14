@@ -29,6 +29,7 @@ export default function Plantillas() {
   };
 
   return (
+    <main className="plantillashome">
     <div className="plantillas-container">
       <h1>Mis Plantillas</h1>
 
@@ -66,5 +67,6 @@ export default function Plantillas() {
         </div>
       )}
     </div>
+    </main>
   );
 }

@@ -43,6 +43,7 @@ export default function CrearPlantillas() {
   };
 
   return (
+    <main className="cplantilla">
     <div className="crear-container">
       <h2>{editIndex !== null ? "Editar Plantilla" : "Crear Plantilla"}</h2>
 
@@ -83,5 +84,6 @@ export default function CrearPlantillas() {
         </button>
       </div>
     </div>
+    </main>
   );
 }

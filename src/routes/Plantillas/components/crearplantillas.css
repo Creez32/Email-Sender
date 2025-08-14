@@ -1,9 +1,22 @@
 /* src/routes/Plantillas/components/crearplantillas.css */
 
+.cplantilla {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
 .crear-container {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    width: 85%;
+    padding: 15px;
+    background: #f4f6f8;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.06);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 label {
@@ -12,7 +25,8 @@ label {
   font-weight: bold;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -32,10 +46,11 @@ textarea {
 }
 
 .btn-volver {
-  background: #ccc;
+  background-color: #ccc;
+  color: #333;
+  padding: 10px 16px;
   border: none;
-  padding: 10px 15px;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -56,5 +71,21 @@ textarea {
   .acciones {
     flex-direction: column;
     gap: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .crear-container {
+    margin: 14px;
+    padding: 14px;
+  }
+
+  .buttons-row {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .btn-volver {
+    width: 100%;
   }
 }
