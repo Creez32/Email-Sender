@@ -7,6 +7,7 @@
     flex-wrap: wrap;
     align-items: center;
 }
+
 .crear-container {
     display: flex;
     flex-direction: column;
@@ -20,72 +21,108 @@
 }
 
 label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 input,
-textarea {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
 textarea {
-  min-height: 150px;
-  resize: vertical;
+    min-height: 150px;
+    resize: vertical;
+}
+
+.variables-container {
+    margin-top: 15px;
+    padding: 10px;
+    background: #e8f4f4;
+    border: 1px dashed #008080;
+    border-radius: 8px;
+}
+
+.variables-container h4 {
+    margin-bottom: 8px;
+    color: #006666;
+}
+
+.variables-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.variable-btn {
+    background: #008080;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s ease-in-out;
+    text-transform: capitalize;
+}
+
+.variable-btn:hover {
+    background: #006666;
 }
 
 .acciones {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 .btn-volver {
-  background-color: #ccc;
-  color: #333;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+    background-color: #ccc;
+    color: #333;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .btn-guardar {
-  background: #008080;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 6px;
-  cursor: pointer;
+    background: #008080;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .btn-guardar:hover {
-  background: #006666;
+    background: #006666;
 }
 
 @media (max-width: 600px) {
-  .acciones {
-    flex-direction: column;
-    gap: 10px;
-  }
+    .acciones {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 @media (max-width: 600px) {
-  .crear-container {
-    margin: 14px;
-    padding: 14px;
-  }
+    .crear-container {
+        margin: 14px;
+        padding: 14px;
+    }
 
-  .buttons-row {
-    flex-direction: column-reverse;
-    gap: 8px;
-  }
+    .buttons-row {
+        flex-direction: column-reverse;
+        gap: 8px;
+    }
 
-  .btn-volver {
-    width: 100%;
-  }
+    .btn-volver {
+        width: 100%;
+    }
 }
