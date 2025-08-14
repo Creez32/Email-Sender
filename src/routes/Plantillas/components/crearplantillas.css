@@ -1,0 +1,60 @@
+/* src/routes/Plantillas/components/crearplantillas.css */
+
+.crear-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-volver {
+  background: #ccc;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-guardar {
+  background: #008080;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-guardar:hover {
+  background: #006666;
+}
+
+@media (max-width: 600px) {
+  .acciones {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

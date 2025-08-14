@@ -12,6 +12,7 @@ function useLoginReducer() {
     const logearUsuario = async (item) => {
         try {
             const baseURL = apiConfig.productionUrl; // Cambia según el entorno
+            console.log (baseURL)
             const loginRouter = '/users/login';
             const responseLogin = await axios.post(`${baseURL}${loginRouter}`, item);
             if (responseLogin.status !== 200) {
