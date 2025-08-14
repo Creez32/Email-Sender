@@ -95,6 +95,9 @@
     margin-bottom: 6px;
 }
 
+.crear-container .ErrorForm{
+    color: var(--danger-color);
+}
 /* botones */
 .crear-container .buttons-row {
     display: flex;

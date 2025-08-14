@@ -5,7 +5,7 @@ const axiosInstance = axios.create({
     maxContentLength: 200000000, // Tamaño máximo de contenido en bytes (200 MB)
 });
 
-const baseUrl = `${apiConfig.fiscalizacionUrl}`;
+const baseUrl = `${apiConfig.productionUrl}`;
 const storedToken = localStorage.getItem('andesToken'); // Traemos el token de localStorage
 let authToken = "";
 

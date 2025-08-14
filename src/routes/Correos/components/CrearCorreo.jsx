@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import consulta from '../../../utils/consulta';
 import './CrearCorreo.css';
 
 export default function CrearCorreo() {
@@ -10,6 +11,7 @@ export default function CrearCorreo() {
     const [recipientInput, setRecipientInput] = useState('');
     const [asunto, setAsunto] = useState('');
     const [mensaje, setMensaje] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const inputRef = useRef(null);
 
     // validadores
@@ -49,7 +51,7 @@ export default function CrearCorreo() {
             if (!recipientInput.trim()) return;
             const { invalid } = addRecipientsFromText(recipientInput);
             if (invalid.length) {
-                alert('Destinatarios inválidos: ' + invalid.join(', '));
+                setErrorMessage('Destinatarios inválidos: ' + invalid.join(', '));
             }
             setRecipientInput('');
         }
@@ -70,102 +72,116 @@ export default function CrearCorreo() {
         setRecipients(recipients.filter((_, i) => i !== idx));
     };
 
-    const handleEnviar = () => {
-        // si queda texto en el input, intentamos agregarlo
-        if (recipientInput.trim()) {
-            const { invalid } = addRecipientsFromText(recipientInput);
-            if (invalid.length) {
-                alert('Destinatarios inválidos: ' + invalid.join(', '));
+    const handleEnviar = async (e) => {
+        try {
+            e.preventDefault();
+            // si queda texto en el input, intentamos agregarlo
+            if (recipientInput.trim()) {
+                const { invalid } = addRecipientsFromText(recipientInput);
+                if (invalid.length) {
+                    setErrorMessage('Destinatarios inválidos: ' + invalid.join(', '));
+                    return;
+                }
+            }
+
+            if (recipients.length === 0) {
+                setErrorMessage('Agrega al menos un destinatario (email o CUIT).');
                 return;
             }
-            setRecipientInput('');
-        }
+            if (!asunto.trim()) {
+                setErrorMessage('Completa el asunto.');
+                return;
+            }
+            if (!mensaje.trim()) {
+                setErrorMessage('Completa el mensaje.');
+                return;
+            }
 
-        if (recipients.length === 0) {
-            alert('Agrega al menos un destinatario (email o CUIT).');
-            return;
-        }
-        if (!asunto.trim()) {
-            alert('Completa el asunto.');
-            return;
-        }
-        if (!mensaje.trim()) {
-            alert('Completa el mensaje.');
-            return;
-        }
+            const urlEnviarCorreo = '/email/api/mensaje/enviar';
+            const data = {
+                recipients: recipients,
+                asunto: asunto,
+                mensaje: mensaje
+            };
 
-        // aquí iría la lógica real de envío (API). Ahora simulamos:
-        alert(
-            `Correo enviado a ${recipients.length} destinatario(s):\n\n${recipients.join(
-                ', '
-            )}\n\nAsunto: ${asunto}`
-        );
+            const response = await consulta.post(urlEnviarCorreo, data);
+            console.log(response)
 
-        // reset
-        setRecipients([]);
-        setAsunto('');
-        setMensaje('');
+
+        } catch (error) {
+            console.error(error);
+            setErrorMessage('Error al enviar el correo');
+        }
     };
 
     return (
         <main className='Correos'>
             <div className="crear-container">
-
                 <h2>Crear Nuevo Correo</h2>
+                <form onSubmit={handleEnviar}>
+                    <div className="form-data">
+                        <label className="label">Destinatarios</label>
+                        <div
+                            className="recipients-input"
+                            onClick={() => inputRef.current && inputRef.current.focus()}
+                        >
+                            {recipients.map((r, idx) => (
+                                <span className="recipient-chip" key={r + idx}>
+                                    {r}
+                                    <button
+                                        type="button"
+                                        className="remove-recipient"
+                                        onClick={() => removeRecipient(idx)}
+                                        aria-label={`Eliminar ${r}`}
+                                    >
+                                        ×
+                                    </button>
+                                </span>
+                            ))}
 
-                <label className="label">Destinatarios</label>
-                <div
-                    className="recipients-input"
-                    onClick={() => inputRef.current && inputRef.current.focus()}
-                >
-                    {recipients.map((r, idx) => (
-                        <span className="recipient-chip" key={r + idx}>
-                            {r}
-                            <button
-                                type="button"
-                                className="remove-recipient"
-                                onClick={() => removeRecipient(idx)}
-                                aria-label={`Eliminar ${r}`}
-                            >
-                                ×
-                            </button>
-                        </span>
-                    ))}
+                            <input
+                                ref={inputRef}
+                                className="recipient-text-input"
+                                value={recipientInput}
+                                onChange={(e) => setRecipientInput(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                                onPaste={handlePaste}
+                                placeholder="Agregar destinatario y presiona Enter (puedes pegar varios separados por ',')"
+                            />
+                        </div>
+                    </div>
 
-                    <input
-                        ref={inputRef}
-                        className="recipient-text-input"
-                        value={recipientInput}
-                        onChange={(e) => setRecipientInput(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                        onPaste={handlePaste}
-                        placeholder="Agregar destinatario y presiona Enter (puedes pegar varios separados por ',')"
-                    />
-                </div>
+                    <div className="form-data">
+                        <label className="label">Asunto</label>
+                        <input
+                            type="text"
+                            placeholder="Asunto"
+                            value={asunto}
+                            onChange={(e) => setAsunto(e.target.value)}
+                        />
+                    </div>
 
-                <label className="label">Asunto</label>
-                <input
-                    type="text"
-                    placeholder="Asunto"
-                    value={asunto}
-                    onChange={(e) => setAsunto(e.target.value)}
-                />
+                    <div className="form-data">
+                        <label className="label">Mensaje</label>
+                        <textarea
+                            placeholder="Escribe tu mensaje aquí..."
+                            value={mensaje}
+                            onChange={(e) => setMensaje(e.target.value)}
+                        ></textarea>
+                    </div>
 
-                <label className="label">Mensaje</label>
-                <textarea
-                    placeholder="Escribe tu mensaje aquí..."
-                    value={mensaje}
-                    onChange={(e) => setMensaje(e.target.value)}
-                ></textarea>
-
-                <div className="buttons-row">
-                    <button className="btn-enviar" onClick={handleEnviar}>
-                        Enviar
-                    </button>
-                    <button className="btn-volver" onClick={() => navigate('/Correos')}>
-                        Volver
-                    </button>
-                </div>
+                    <div className="ErrorForm">
+                        <small>{errorMessage}</small>
+                    </div>
+                    <div className="buttons-row">
+                        <button className="btn-enviar" type='submit'>
+                            Enviar
+                        </button>
+                        <button className="btn-volver" onClick={() => navigate('/Correos')}>
+                            Volver
+                        </button>
+                    </div>
+                </form>
             </div>
         </main>
     );
