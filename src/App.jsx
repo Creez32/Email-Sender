@@ -81,6 +81,14 @@ function App() {
                         </RutaProtegida>
                     }
                 />
+                <Route
+                    path="/Plantillas/editar"
+                    element={
+                        <RutaProtegida>
+                            <CrearPlantillas />
+                        </RutaProtegida>
+                    }
+                />
 
                 {/* Login */}
                 <Route path="/Login" element={<Login />} />
