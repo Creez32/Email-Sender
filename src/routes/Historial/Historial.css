@@ -15,6 +15,15 @@
     border-right: 1px solid #555;
 }
 
+.end-message {
+    max-height: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .email-item {
     display: flex;
     align-items: center;
@@ -90,6 +99,27 @@
     padding: 20px;
     display: block;
     background-color: var(--panel-color);
+}
+
+.email-preview-panel h2 {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.email-preview-panel h4 {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+}
+.email-preview-panel p {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+    height: 100%;
+    max-height: calc(100vh - 142px);
+    overflow: auto;
 }
 
 .empty-preview {

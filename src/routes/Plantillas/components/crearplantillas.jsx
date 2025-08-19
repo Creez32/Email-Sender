@@ -85,7 +85,7 @@ export default function CrearPlantillas({ plantilla, onClose, onGuardar }) {
         <textarea
           value={mensaje}
           onChange={(e) => setMensaje(e.target.value)}
-          maxLength={1500}
+          maxLength={2000}
         />
 
         <div className="variables-panel">

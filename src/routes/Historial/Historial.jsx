@@ -13,12 +13,11 @@ export default function Historial() {
 	const [hasMore, setHasMore] = useState(true);
 	const [isRefreshing, setIsRefreshing] = useState(false);
 
-	/* console.log("Emails -->", emails)
+	console.log("Emails -->", emails)
 	console.log("setHasMore -->", hasMore)
 	console.log("isRefreshing -->", isRefreshing)
 	console.log("showMobileDetail -->", showMobileDetail)
-	console.log("isMobile -->", isMobile) */
-	
+	console.log("isMobile -->", isMobile)
 
 	const scrollRef = useRef(null);
 
@@ -109,48 +108,62 @@ export default function Historial() {
 							No hay correos para mostrar
 						</div>
 					) : (
-						emails.map((correo) => (
-							<div
-								key={correo.id}
-								className={`email-item ${selectedEmail?.id === correo.id ? "selected" : ""}`}
-								onClick={() => handleEmailClick({
-									id: correo.id,
-									sender: correo.direccion,
-									subject: correo.email[0]?.asunto || "Sin asunto",
-									message: correo.email[0]?.mail || "",
-									time: new Date(correo.createdAt).toLocaleString(),
-									tipo: correo.email[0]?.plantilla || "general"
-								})}
-							>
-								<div className="email-avatar">
-									{(correo.email[0]?.plantilla || "G")[0].toUpperCase()}
+						emails.map((correo) =>
+							correo.email.map((email, index) => (
+								<div
+									key={`${correo.id}-${index}`}
+									className={`email-item ${selectedEmail?.id === `${correo.id}-${index}`
+										? "selected"
+										: ""
+										}`}
+									onClick={() =>
+										handleEmailClick({
+											id: `${correo.id}-${index}`,
+											sender: correo.direccion,
+											subject: email.asunto || "Sin asunto",
+											message: email.mail || "",
+											time: new Date(correo.createdAt).toLocaleString(),
+											tipo: email.plantilla || "general",
+										})
+									}
+								>
+									<div className="email-avatar">
+										{(correo.email[0]?.plantilla || "G")[0].toUpperCase()}
+									</div>
+									<div className="email-content">
+										<div className="email-sender">{correo.direccion}</div>
+										<div className="email-subject">
+											{correo.email[0]?.asunto || "Sin asunto"}
+										</div>
+										<div className="email-preview">
+											{correo.email[0]?.mail || ""}
+										</div>
+										<div className="email-time">
+											{new Date(correo.createdAt).toLocaleString()}
+										</div>
+									</div>
 								</div>
-								<div className="email-content">
-									<div className="email-sender">{correo.direccion}</div>
-									<div className="email-subject">{correo.email[0]?.asunto || "Sin asunto"}</div>
-									<div className="email-preview">{correo.email[0]?.mail || ""}</div>
-									<div className="email-time">{new Date(correo.createdAt).toLocaleString()}</div>
-								</div>
-							</div>
-						))
+							))
+						)
 					)}
 					{isLoading && <div className="loading">Cargando...</div>}
 					{!hasMore && !isLoading && (
-						<div className="end-message">
-							No hay más correos
-						</div>
+						<div className="end-message">No hay más correos</div>
 					)}
 				</div>
 			) : null}
 
 			{/* PANEL DE PREVISUALIZACIÓN */}
 			{!isMobile || showMobileDetail ? (
-				<div className={`email-preview-panel ${isMobile && showMobileDetail ? "show" : ""}`}>
+				<div
+					className={`email-preview-panel ${isMobile && showMobileDetail ? "show" : ""
+						}`}
+				>
 					{selectedEmail ? (
 						<>
-							<h2>{selectedEmail.subject}</h2>
-							<h4>De: {selectedEmail.sender}</h4>
-							<p>{selectedEmail.message}</p>
+							<h2>Asunto: {selectedEmail.subject}</h2>
+							<h4>Para: {selectedEmail.sender}</h4>
+							<div dangerouslySetInnerHTML={{ __html: selectedEmail.message }} />
 							{isMobile && (
 								<button className="back-button" onClick={handleBack}>
 									VOLVER
@@ -165,12 +178,13 @@ export default function Historial() {
 				</div>
 			) : null}
 
-			{/* Botón cargar más (opcional si falla el scroll) */}
+			{/* Botón cargar más */}
 			{!isLoading && hasMore && (
-				<button onClick={() => setPage(prev => prev + 1)} className="load-more">
+				<button onClick={() => setPage((prev) => prev + 1)} className="load-more">
 					Cargar más
 				</button>
 			)}
 		</main>
 	);
+
 }

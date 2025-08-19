@@ -75,6 +75,7 @@ export default function CrearCorreo() {
     const handleEnviar = async (e) => {
         try {
             e.preventDefault();
+            setErrorMessage('');
             // si queda texto en el input, intentamos agregarlo
             if (recipientInput.trim()) {
                 const { invalid } = addRecipientsFromText(recipientInput);
@@ -106,7 +107,7 @@ export default function CrearCorreo() {
 
             const response = await consulta.post(urlEnviarCorreo, data);
             console.log(response)
-
+            navigate('/Correos')
 
         } catch (error) {
             console.error(error);
