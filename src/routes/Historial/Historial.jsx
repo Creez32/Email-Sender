@@ -128,18 +128,15 @@ export default function Historial() {
 									}
 								>
 									<div className="email-avatar">
-										{(correo.email[0]?.plantilla || "G")[0].toUpperCase()}
+										{(email.plantilla || "G")[0].toUpperCase()}
 									</div>
 									<div className="email-content">
 										<div className="email-sender">{correo.direccion}</div>
 										<div className="email-subject">
-											{correo.email[0]?.asunto || "Sin asunto"}
-										</div>
-										<div className="email-preview">
-											{correo.email[0]?.mail || ""}
+											{email.asunto || "Sin asunto"}
 										</div>
 										<div className="email-time">
-											{new Date(correo.createdAt).toLocaleString()}
+											{new Date(email.createdAt).toLocaleString()}
 										</div>
 									</div>
 								</div>
@@ -161,9 +158,9 @@ export default function Historial() {
 				>
 					{selectedEmail ? (
 						<>
-							<h2>Asunto: {selectedEmail.subject}</h2>
-							<h4>Para: {selectedEmail.sender}</h4>
-							<div dangerouslySetInnerHTML={{ __html: selectedEmail.message }} />
+							<div className="Asunto">Asunto: {selectedEmail.subject}</div>
+							<div className="Para">Para: {selectedEmail.sender}</div>
+							<div className="email-preview" dangerouslySetInnerHTML={{ __html: selectedEmail.message }} />
 							{isMobile && (
 								<button className="back-button" onClick={handleBack}>
 									VOLVER

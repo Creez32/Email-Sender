@@ -101,25 +101,24 @@
     background-color: var(--panel-color);
 }
 
-.email-preview-panel h2 {
+.email-preview-panel .Asunto {
     border: 1px solid white;
     border-radius: 10px;
     padding: 10px;
 }
 
-.email-preview-panel h4 {
+.email-preview-panel .Para {
     border: 1px solid white;
     border-radius: 10px;
     padding: 10px;
     margin: 10px 0;
 }
-.email-preview-panel p {
+.email-preview-panel .email-preview {
     border: 1px solid white;
     border-radius: 10px;
     padding: 10px;
     height: 100%;
     max-height: calc(100vh - 142px);
-    overflow: auto;
 }
 
 .empty-preview {
