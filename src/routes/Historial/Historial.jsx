@@ -13,6 +13,13 @@ export default function Historial() {
 	const [hasMore, setHasMore] = useState(true);
 	const [isRefreshing, setIsRefreshing] = useState(false);
 
+	/* console.log("Emails -->", emails)
+	console.log("setHasMore -->", hasMore)
+	console.log("isRefreshing -->", isRefreshing)
+	console.log("showMobileDetail -->", showMobileDetail)
+	console.log("isMobile -->", isMobile) */
+	
+
 	const scrollRef = useRef(null);
 
 	const buscarEmails = async (append = false) => {
@@ -20,8 +27,7 @@ export default function Historial() {
 			setIsLoading(true);
 			const urlEmails = `/email/api?page=${page}&limit=${limit}`;
 			const response = await consulta.get(urlEmails);
-
-			const nuevos = response.data.data || [];
+			const nuevos = response.data || [];
 			if (nuevos.length < limit) setHasMore(false);
 			else setHasMore(true);
 
