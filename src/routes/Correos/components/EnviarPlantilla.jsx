@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import consulta from "../../../utils/consulta";
 import "./EnviarPlantilla.css";
@@ -52,14 +52,35 @@ export default function EnviarPlantilla() {
     setMensajeFinal(reemplazo);
   };
 
-  // Enviar plantilla (simulado)
-  const handleEnviar = () => {
+  // Enviar plantilla (real al backend)
+  const handleEnviar = async () => {
     if (!plantillaSeleccionada) {
       alert("Selecciona una plantilla primero.");
       return;
     }
-    alert(`Plantilla enviada:\n\n${mensajeFinal}`);
-    navigate("/Correos"); // redirigir a listado de correos
+
+    try {
+      const payload = {
+        CUILAfiliado: afiliado.CUILAfiliado,
+        direccion: afiliado.direccion,
+        idContrato: afiliado.idContrato,
+        asunto: plantillaSeleccionada.asunto || "Sin asunto",
+        plantilla: plantillaSeleccionada.nombrePlantilla,
+        mensaje: mensajeFinal,
+      };
+
+      const res = await consulta.post(`/email/api/plantillas/enviar`, payload);
+
+      if (res.status === 200 || res.status === 201) {
+        alert("Correo enviado correctamente ✅");
+        navigate("/Correos");
+      } else {
+        alert("No se pudo enviar el correo ❌");
+      }
+    } catch (err) {
+      console.error("Error al enviar correo:", err);
+      alert("Ocurrió un error al enviar el correo.");
+    }
   };
 
   return (
