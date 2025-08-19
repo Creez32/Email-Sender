@@ -77,7 +77,7 @@ export default function Historial() {
 		const intervalo = setInterval(async () => {
 			setIsRefreshing(true);
 			setPage(1);
-			await buscarEmails();
+			await buscarEmails(false);
 			setIsRefreshing(false);
 		}, 20 * 60 * 1000); // 20 minutos en milisegundos
 

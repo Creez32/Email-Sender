@@ -1,41 +1,84 @@
 .enviar-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-        width: 85%;
-    padding: 20px;
-    background: #f4f6f8;
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f4f6f8;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .enviar-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .enviar-container input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
 }
 
-.enviar-container .btn-enviar {
-    background-color: #17518b;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-bottom: 10px;
+.btn-aceptar, .btn-enviar {
+  background-color: #17518b;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 .btn-volver {
-    background-color: #ccc;
-    color: #333;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+  background-color: #ccc;
+  color: #333;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.lista-plantillas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card-plantilla {
+  flex: 1 1 200px;
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.card-plantilla.selected {
+  border-color: #17518b;
+  background-color: #e6f0fa;
+}
+
+.preview {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 5px;
+}
+
+.vista-previa {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
 }
